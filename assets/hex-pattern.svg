@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <defs>
+    <pattern id="h" width="120" height="104" patternUnits="userSpaceOnUse">
+      <path d="M60 0 L120 30 L120 74 L60 104 L0 74 L0 30 Z" fill="none" stroke="#09b99a" stroke-opacity="0.06" stroke-width="1"/>
+      <path d="M60 8 L112 34 L112 70 L60 96 L8 70 L8 34 Z" fill="none" stroke="#06c6a2" stroke-opacity="0.04" stroke-width="0.6"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#h)"/>
+  <!-- اضافه لمسة مركزية مشابهة للشعار -->
+  <g transform="translate(200,150) scale(1.1)" opacity="0.06">
+    <path d="M160 64 L192 96 L160 192 L64 224 L-16 160 L64 64 Z" fill="#08c6a2" />
+  </g>
+</svg>
