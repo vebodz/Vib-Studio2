@@ -4,186 +4,190 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Vib Studio — سيرفر البرمجة</title>
-  <link rel="icon" href="assets/favicon.ico" />
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Highlight.js for code styling (CDN) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+
+  <link rel="icon" href="assets/favicon.ico" />
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <!-- Animated background SVG + grid -->
-  <div id="bg">
-    <!-- subtle hex pattern overlay (SVG) -->
-    <svg id="bg-hex" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <defs>
-        <linearGradient id="g1" x1="0" x2="1">
-          <stop offset="0" stop-color="#08d6b0" stop-opacity="0.08"/>
-          <stop offset="1" stop-color="#00b89a" stop-opacity="0.04"/>
-        </linearGradient>
-      </defs>
-      <!-- repeated hex grids using <g> for subtle shapes -->
-      <g fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1">
-        <!-- draw some hexagons -->
-        <polygon points="60,20 90,35 90,70 60,85 30,70 30,35" />
-        <polygon points="180,100 210,115 210,150 180,165 150,150 150,115" />
-        <polygon points="360,40 390,55 390,90 360,105 330,90 330,55" />
-        <polygon points="540,140 570,155 570,190 540,205 510,190 510,155" />
-        <polygon points="700,40 730,55 730,90 700,105 670,90 670,55" />
-      </g>
-      <rect width="100%" height="100%" fill="url(#g1)" opacity="0.02"></rect>
-    </svg>
-    <!-- moving lines layer -->
-    <div id="moving-lines" aria-hidden="true"></div>
-  </div>
+  <!-- background overlays use assets/hex-pattern.svg -->
+  <div class="bg-overlay"></div>
 
-  <header class="site-header container" role="banner">
-    <div class="brand">
-      <img src="assets/logo.png" alt="Vib Studio" class="logo" id="logoImg">
-      <div class="brand-text">
-        <h1>Vib Studio</h1>
-        <p class="tagline">سيرفر للبرمجة — مجتمع، مشاريع، تعلم</p>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo-wrap">
+          <img src="assets/logo.png" alt="Vib Studio" class="logo">
+        </div>
+        <div class="brand-text">
+          <h1>Vib Studio</h1>
+          <p class="tagline">سيرفر مخصص للبرمجة — مشاريع، مراجعات، دورات</p>
+        </div>
       </div>
-    </div>
 
-    <nav class="nav" role="navigation" aria-label="قائمة الموقع">
-      <a href="#features" class="nav-link">المميزات</a>
-      <a href="#projects" class="nav-link">المشاريع</a>
-      <a href="#terminal" class="nav-link">الطرفية</a>
-      <button id="themeToggle" class="icon-btn" aria-label="تبديل النمط">🎛️</button>
-    </nav>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="#features">المميزات</a></li>
+          <li><a href="#projects">مشاريع</a></li>
+          <li><a href="#playground">تجربة الكود</a></li>
+          <li><a href="#contact">تواصل</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button id="joinBtn" class="btn btn-primary">انضم الآن</button>
+          <button id="themeToggle" class="btn btn-ghost" title="تبديل اللون">🎛</button>
+          <button id="menuToggle" class="menu-toggle" aria-label="قائمة">☰</button>
+        </div>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <section class="hero container" aria-labelledby="heroTitle">
-      <div class="hero-left">
-        <h2 id="heroTitle">مرحباً في Vib Studio</h2>
-        <p class="muted">مكان للمبرمجين والمطورين — شارك مشاريعك، اطلب مراجعات، وتعلم من المجتمع. تصميم مُحدث بثيم شعارك وخلفيات برمجية.</p>
-        <div class="hero-ctas">
-          <button id="btnInvite" class="btn btn-primary">نسخ دعوة السيرفر</button>
-          <a href="#projects" class="btn btn-outline">استعرض المشاريع</a>
-        </div>
+    <section class="hero container">
+      <div class="hero-grid">
+        <div class="hero-left">
+          <h2>مرحبا في Vib Studio</h2>
+          <p class="lead">مساحة مُرتّبة للمبرمجين: فرق عمل، مراجعات كود، مشاريع مفتوحة ومحتوى تعليمي. تصميم برمجي أنيق مستوحى من شعارك.</p>
 
-        <div class="quick-stats">
-          <div class="stat">
-            <div class="num" data-target="128">0</div>
-            <div class="label">أعضاء</div>
+          <div class="hero-cta">
+            <a id="ctaJoin" class="btn btn-primary">انضم للسيرفر</a>
+            <a href="#playground" class="btn btn-outline">جرب الكود الآن</a>
           </div>
-          <div class="stat">
-            <div class="num" data-target="42">0</div>
-            <div class="label">مشاريع</div>
-          </div>
-          <div class="stat">
-            <div class="num" data-target="12">0</div>
-            <div class="label">قنوات تعليمية</div>
-          </div>
-        </div>
-      </div>
 
-      <div class="hero-right">
-        <!-- Card: terminal emulation -->
-        <div class="terminal card" id="terminal" role="region" aria-label="طرفية Vib Studio">
-          <div class="term-header">
-            <div class="dots">
-              <span class="dot red"></span>
-              <span class="dot yellow"></span>
-              <span class="dot green"></span>
+          <div class="meta-cards">
+            <div class="meta-card">
+              <strong id="membersCount">1.2k</strong>
+              <span>أعضاء نشطون</span>
             </div>
-            <div class="term-title">vib@studio: ~</div>
-          </div>
-          <div class="term-body" id="termBody" tabindex="0" aria-live="polite">
-            <div class="term-line"><span class="prompt">VibStudio $</span> <span class="typed" data-text="مرحباً! اكتب help للحصول على الأوامر."></span><span class="cursor">█</span></div>
-          </div>
-          <div class="term-footer">
-            <button class="btn tiny" id="runCmd">تشغيل مثال</button>
-            <button class="btn tiny" id="copyInvite">نسخ دعوة</button>
+            <div class="meta-card">
+              <strong id="projectsCount">42</strong>
+              <span>مشروع مُباشر</span>
+            </div>
+            <div class="meta-card">
+              <strong id="onlineNow">128</strong>
+              <span>متصل الآن</span>
+            </div>
           </div>
         </div>
 
-        <!-- Card: status -->
-        <div class="card status-card">
-          <h4>حالة السيرفر</h4>
-          <p id="serverStatus" class="status offline">جاري التحقق...</p>
-          <small id="statusNote">آخر تحديث: الآن</small>
+        <div class="hero-right">
+          <!-- Decorative floating logo + terminal -->
+          <div class="visual-stack">
+            <div class="floating-logo">
+              <img src="assets/logo.png" alt="Vib Studio" />
+            </div>
+
+            <div class="terminal" id="terminal">
+              <div class="term-header">
+                <div class="dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+                <div class="term-title">cmd — vib@studio</div>
+              </div>
+              <div class="term-body" id="termBody" aria-live="polite"></div>
+              <div class="term-input">
+                <span class="cursor" id="termCursor">█</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="status-panel card">
+            <h4>حالة السيرفر</h4>
+            <p id="serverStatus" class="status offline">جار التحقق...</p>
+            <small id="statusNote">آخر تحديث: الآن</small>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="features" class="container features" aria-labelledby="featuresTitle">
-      <h3 id="featuresTitle">مميزات مطوّرة</h3>
+    <section id="features" class="features container">
+      <h3>مميزات Vib Studio</h3>
       <div class="features-grid">
-        <div class="feature">
-          <h4>لوحة طرفية تفاعلية</h4>
-          <p>نافذة CMD متقنة مع تأثير كتابة، أوامر مساعدة، وزر تشغيل لأمثلة سريعة.</p>
-        </div>
-        <div class="feature">
-          <h4>تصميم منسق</h4>
-          <p>خلفية شبكية متأثرة بشعارك، تدرجات لون متناسقة، وأنيميشن لطيف للواجهات.</p>
-        </div>
-        <div class="feature">
-          <h4>بطاقات مشاريع تفاعلية</h4>
-          <p>سحب/ميل وإضاءات عند المرور، مع إمكانية الربط بمستودعات GitHub.</p>
-        </div>
-        <div class="feature">
-          <h4>تحكم بالدعوات</h4>
-          <p>زر لنسخ رابط الدعوة مباشرة، مع توجيه للانضمام أو فتح الرابط في نافذة جديدة.</p>
-        </div>
+        <article class="feature-card">
+          <h4>قنوات مشاريع متخصصة</h4>
+          <p>تنظيم المشاريع حسب التكنولوجيا مع مستودعات وروابط GitHub مدمجة.</p>
+        </article>
+        <article class="feature-card">
+          <h4>مراجعات كود احترافية</h4>
+          <p>نظام تقييم وتعليقات من المطورين مع قوالب مراجعة محددة.</p>
+        </article>
+        <article class="feature-card">
+          <h4>دورات وورش عمل Live</h4>
+          <p>جدولة دورات مباشرة مع ملفات تدريب ومهام قابلة للتنفيذ.</p>
+        </article>
+        <article class="feature-card">
+          <h4>لوحة شاملة</h4>
+          <p>لوحة تحكم للمشرفين لعرض الإحصائيات وطلبات الانضمام وإدارة المشاريع.</p>
+        </article>
       </div>
     </section>
 
-    <section id="projects" class="container projects" aria-labelledby="projTitle">
-      <h3 id="projTitle">مشاريع مختارة</h3>
+    <section id="projects" class="container projects">
+      <h3>نماذج مشاريع</h3>
       <div class="projects-grid">
-        <article class="project-card" tabindex="0">
-          <div class="proj-badge">JS</div>
-          <h4>Vib Tools</h4>
-          <p>مجموعة أدوات مبسطة لادارة المشاريع والمهام.</p>
-          <div class="proj-actions">
-            <a href="#" class="link">عرض</a>
-            <a href="#" class="link">Git</a>
-          </div>
-        </article>
-
-        <article class="project-card" tabindex="0">
-          <div class="proj-badge">Py</div>
-          <h4>Vib Bot</h4>
-          <p>بوت خفيف لإدارة القنوات والمهام الأوتوماتيكية.</p>
-          <div class="proj-actions">
-            <a href="#" class="link">عرض</a>
-            <a href="#" class="link">Git</a>
-          </div>
-        </article>
-
-        <article class="project-card" tabindex="0">
-          <div class="proj-badge">UI</div>
-          <h4>Design System</h4>
-          <p>مكتبة مكونات واجهة المستخدم الخاصة بالسيرفر.</p>
-          <div class="proj-actions">
-            <a href="#" class="link">عرض</a>
-            <a href="#" class="link">Git</a>
-          </div>
-        </article>
+        <div class="project-card card">
+          <h4>مشاركة كود نظيف</h4>
+          <p>قالب مشروع Node.js جاهز للعمل مع CI وDocker.</p>
+          <div class="tags"><span>#node</span><span>#docker</span></div>
+        </div>
+        <div class="project-card card">
+          <h4>واجهة تفاعلية</h4>
+          <p>واجهة React + Tailwind لمشاريع الدفع والتكامل.</p>
+          <div class="tags"><span>#react</span><span>#ui</span></div>
+        </div>
+        <div class="project-card card">
+          <h4>بوت المسابقات</h4>
+          <p>بوت للتحديات اليومية مع نظام نقاط ومكافآت.</p>
+          <div class="tags"><span>#bot</span><span>#game</span></div>
+        </div>
       </div>
     </section>
 
-    <section class="contact container" aria-labelledby="contactTitle">
-      <h3 id="contactTitle">تواصل/طلب مميزات</h3>
+    <section id="playground" class="container playground">
+      <h3>تجربة الكود (Code Snippet)</h3>
+      <div class="play-grid">
+        <pre><code id="codeSample" class="language-js">
+// مثال سريع — افتح الكونسول لرؤية نتيجة التشغيل
+function greet(name) {
+  return `مرحبا، ${name} — مرحباً بك في Vib Studio!`;
+}
+console.log(greet('Vib Member'));
+        </code></pre>
+        <div class="play-actions">
+          <button id="copyCode" class="btn btn-primary">نسخ الكود</button>
+          <button id="runDemo" class="btn btn-outline">تشغيل (Console)</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact container">
+      <h3>تواصل معنا</h3>
+      <p>أضف دعوة السيرفر أو بريدك للتواصل.</p>
       <form id="contactForm" class="contact-form" onsubmit="return false;">
         <input type="text" id="name" placeholder="اسمك" required>
         <input type="email" id="email" placeholder="بريدك الإلكتروني" required>
-        <textarea id="message" rows="4" placeholder="ماذا تريد؟"></textarea>
-        <button class="btn btn-primary">إرسال</button>
+        <textarea id="message" rows="4" placeholder="رسالتك..." required></textarea>
+        <div class="form-actions">
+          <button class="btn btn-primary">إرسال</button>
+          <button id="saveInvite" class="btn btn-ghost">حفظ رابط الدعوة</button>
+        </div>
       </form>
     </section>
   </main>
 
-  <footer class="site-footer container" role="contentinfo">
-    <div class="foot-inner">
-      <p>© <span id="year"></span> Vib Studio — مبني بحب للبرمجة.</p>
-      <div class="social">
-        <a href="#" aria-label="GitHub">GitHub</a>
-        <a href="#" aria-label="Docs">Docs</a>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Vib Studio — جميع الحقوق محفوظة.</p>
+      <div class="footer-links">
+        <a href="#">سياسة الخصوصية</a>
+        <a href="#">شروط الاستخدام</a>
       </div>
     </div>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>
