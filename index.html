@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vib Studio — سيرفر البرمجة</title>
+  <link rel="icon" href="assets/favicon.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="assets/logo.png" alt="Vib Studio" class="logo">
+        <div class="brand-text">
+          <h1>Vib Studio</h1>
+          <p class="tagline">سيرفر للبرمجة — مجتمع، مشاريع، تعليم</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <button id="joinBtn" class="btn btn-primary">انضم الآن</button>
+        <button id="menuToggle" class="menu-toggle" aria-label="قائمة">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <h2>مرحبا في Vib Studio</h2>
+          <p>مكان للمبرمجين: مشاريع مشتركة، مساحات عمل، دروس، وورش. ثيم برمجي نظيف مع ألوان شعارك.</p>
+          <div class="hero-actions">
+            <a href="#" class="btn btn-primary" id="ctaJoin">انضم للسيرفر</a>
+            <a href="#features" class="btn btn-outline">المميزات</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="card status-card">
+            <h3>حالة السيرفر</h3>
+            <p id="serverStatus" class="status offline">جار التحقق...</p>
+            <small id="statusNote">آخر تحديث: الآن</small>
+          </div>
+
+          <div class="card code-sample">
+            <h4>مثال كود</h4>
+            <pre><code class="fira">console.log('Welcome to Vib Studio');</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="features container">
+      <h3>ماذا نقدم</h3>
+      <div class="grid">
+        <div class="feature">
+          <h4>قنوات مشاريع</h4>
+          <p>مساحات مخصصة للعمل على مشاريع حقيقية ومشاركة الكود.</p>
+        </div>
+        <div class="feature">
+          <h4>دروس وورش</h4>
+          <p>جلسات تعليمية مباشرة وموارد للمبتدئين والمتقدمين.</p>
+        </div>
+        <div class="feature">
+          <h4>مراجعات كود</h4>
+          <p>مراجعات من الأعضاء وخبراء لتحسين جودة الكود.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact container">
+      <h3>تواصل معنا</h3>
+      <p>للتعاون أو الاستفسار: ضع دعوة سيرفرك أو تواصل عبر الإيميل.</p>
+      <form id="contactForm" class="contact-form" onsubmit="return false;">
+        <input type="text" id="name" placeholder="اسمك" required>
+        <input type="email" id="email" placeholder="بريدك الإلكتروني" required>
+        <textarea id="message" rows="4" placeholder="رسالتك..." required></textarea>
+        <button class="btn btn-primary">إرسال</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Vib Studio — جميع الحقوق محفوظة.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
